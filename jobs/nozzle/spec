@@ -1,0 +1,30 @@
+---
+name: nozzle
+
+templates:
+  ctl.erb: bin/ctl
+  environment.sh.erb: bin/environment.sh
+
+packages:
+- nozzle
+
+properties:
+  uaa.addr:
+    description: "The address of UAA."
+  uaa.client_id:
+    description: "The client ID for UAA. This must have doppler.firehose scope."
+  uaa.client_secret:
+    description: "The client secret for UAA."
+
+  loggregator.addr:
+    description: "The address of Loggregator. (NOTE: This must include scheme and port)"
+  loggregator.subscription_id:
+    description: "The firehose subscription ID for Loggregator."
+
+  http.port:
+    description: "The port the nozzle will listen on for any HTTP requests."
+    default: 8080
+
+  tls.skip_cert_verify:
+    description: "Skip TLS cert verify for both UAA and Loggregator."
+    default: false

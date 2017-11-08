@@ -1,0 +1,42 @@
+name: noisy-neighbor-nozzle
+
+stemcells:
+- alias: default
+  os: ubuntu-trusty
+  version: latest
+
+releases:
+- name: noisy-neighbor-nozzle
+  version: latest
+
+instance_groups:
+- name: noisy-neighbor-nozzle
+  azs:
+  - z1
+  - z2
+  instances: 1
+  persistent_disk_type: 5GB
+  vm_type: minimal
+  stemcell: default
+  networks:
+  - name: default
+  jobs:
+  - name: nozzle
+    release: noisy-neighbor-nozzle
+    properties:
+      tls:
+        skip_cert_verify: true
+      uaa:
+        addr: https://uaa.((system_domain))
+        client_id: ((uaa_client_id))
+        client_secret: ((uaa_client_secret))
+      loggregator:
+        addr: wss://doppler.((system_domain)):443
+        subscription_id: noisy-neighbor
+
+update:
+  canaries: 10
+  max_in_flight: 10
+  canary_watch_time: 30000-60000
+  update_watch_time: 5000-60000
+  serial: true
