@@ -30,6 +30,6 @@ function sync_package() {
   )
 }
 
-sync_package nozzle -app  code.cloudfoundry.org/noisy-neighbor-nozzle &
+sync_package nozzle -app  code.cloudfoundry.org/noisy-neighbor-nozzle/nozzle &
 
 wait
