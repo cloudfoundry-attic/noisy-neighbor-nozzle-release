@@ -7,10 +7,10 @@ dependencies:
 files:
 - code.cloudfoundry.org/go-diodes/*.go # gosub
 - code.cloudfoundry.org/go-envstruct/*.go # gosub
-- code.cloudfoundry.org/noisy-neighbor-nozzle/*.go # gosub
-- code.cloudfoundry.org/noisy-neighbor-nozzle/internal/app/*.go # gosub
-- code.cloudfoundry.org/noisy-neighbor-nozzle/internal/store/*.go # gosub
-- code.cloudfoundry.org/noisy-neighbor-nozzle/internal/web/*.go # gosub
+- code.cloudfoundry.org/noisy-neighbor-nozzle/nozzle/*.go # gosub
+- code.cloudfoundry.org/noisy-neighbor-nozzle/nozzle/internal/app/*.go # gosub
+- code.cloudfoundry.org/noisy-neighbor-nozzle/nozzle/internal/store/*.go # gosub
+- code.cloudfoundry.org/noisy-neighbor-nozzle/nozzle/internal/web/*.go # gosub
 - github.com/cloudfoundry/noaa/*.go # gosub
 - github.com/cloudfoundry/noaa/consumer/*.go # gosub
 - github.com/cloudfoundry/noaa/consumer/internal/*.go # gosub
