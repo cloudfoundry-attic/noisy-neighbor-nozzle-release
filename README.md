@@ -1,4 +1,5 @@
-Noisy Neighbor Nozzle
+Noisy Neighbor Nozzle [![slack.cloudfoundry.org][slack-badge]][loggregator-slack] [![CI Badge][ci-badge]][ci-pipeline]
+
 =====================
 
 This is a Loggregator Firehose nozzle. It keeps track of the log rate for
@@ -66,5 +67,9 @@ The key for each count is `application-guid/instance-index`, the value is the
 number of logs received from the firehose for the configured rate (default is
 1 minute).
 
-[firehose-details]: https://github.com/cloudfoundry/loggregator-release#consuming-the-firehose
-[jq-github]:        https://github.com/stedolan/jq
+[firehose-details]:  https://github.com/cloudfoundry/loggregator-release#consuming-the-firehose
+[jq-github]:         https://github.com/stedolan/jq
+[slack-badge]:       https://slack.cloudfoundry.org/badge.svg
+[loggregator-slack]: https://cloudfoundry.slack.com/archives/loggregator
+[ci-badge]:          https://loggregator.ci.cf-app.com/api/v1/pipelines/loggregator/jobs/noisy-neighbor-nozzle-tests/badge
+[ci-pipeline]:       https://loggregator.ci.cf-app.com/
