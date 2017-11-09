@@ -10,7 +10,7 @@ releases:
   version: latest
 
 instance_groups:
-- name: noisy-neighbor-nozzle
+- name: nozzle
   azs:
   - z1
   - z2
