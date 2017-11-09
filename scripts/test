@@ -1,0 +1,3 @@
+#!/bin/bash
+
+go test code.cloudfoundry.org/noisy-neighbor-nozzle/... -race
