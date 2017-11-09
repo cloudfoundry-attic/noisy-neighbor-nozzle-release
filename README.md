@@ -1,5 +1,4 @@
 Noisy Neighbor Nozzle [![slack.cloudfoundry.org][slack-badge]][loggregator-slack] [![CI Badge][ci-badge]][ci-pipeline]
-
 =====================
 
 This is a Loggregator Firehose nozzle. It keeps track of the log rate for
