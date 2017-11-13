@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+set -e
+
+env_name=$1
+if [ "$env_name" == '' ]
+then
+    env_name=lite
+fi
+
+echo "System Domain:"
+read system_domain
+
+echo ""
+echo "Client ID:"
+read uaa_client_id
+
+echo ""
+echo "Client Secret:"
+read uaa_client_secret
+
+echo ""
+echo "Datadog API Key:"
+read datadog_api_key
+
+bosh create-release --force
+bosh -e $env_name upload-release --rebase
+bosh -e $env_name deploy -n -d noisy-neighbor-nozzle manifests/noisy-neighbor-nozzle.yml \
+    -v "uaa_client_id=$uaa_client_id" \
+    -v "uaa_client_secret=$uaa_client_secret" \
+    -v "datadog_api_key=$datadog_api_key" \
+    -v "system_domain=$system_domain"
