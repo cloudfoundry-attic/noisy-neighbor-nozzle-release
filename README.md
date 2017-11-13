@@ -13,6 +13,7 @@ scope.
 bosh create-release
 bosh -e lite upload-release
 bosh -d noisy-neighbor-nozzle deploy manifests/noisy-neighbor-nozzle.yml \
+  -v datadog_api_key=DATADOG_API_KEY \
   -v uaa_client_id=CLIENT_ID \
   -v uaa_client_secret=CLIENT_SECRET \
   -v system_domain=bosh-lite.com
@@ -65,6 +66,32 @@ following:
 The key for each count is `application-guid/instance-index`, the value is the
 number of logs received from the firehose for the configured rate (default is
 1 minute).
+
+You can also fetch rates for a single timestamp. Timestamps are truncated to
+the minute.
+
+```
+curl localhost:8080/state/1510604640
+```
+
+This returns a single rate object:
+
+```
+{
+  "counts": {
+    "d99bcfb3-50f5-4836-9cea-ac1fb769b073/1": 1084,
+    "24885497-ecfa-4aaa-b4c5-965c457f7670/0": 2339,
+    "295b7483-17ae-4063-85d6-c1f9d162bb92/0": 2,
+    "d505ddb7-3b48-43b7-945a-444c19db6e15/0": 1251,
+    "d505ddb7-3b48-43b7-945a-444c19db6e15/1": 147,
+    "d505ddb7-3b48-43b7-945a-444c19db6e15/2": 248,
+    "d505ddb7-3b48-43b7-945a-444c19db6e15/3": 1252,
+    "d505ddb7-3b48-43b7-945a-444c19db6e15/4": 1252,
+    "d99bcfb3-50f5-4836-9cea-ac1fb769b073/0": 1178
+  },
+  "timestamp": 1510604640
+}
+```
 
 [firehose-details]:  https://github.com/cloudfoundry/loggregator-release#consuming-the-firehose
 [jq-github]:         https://github.com/stedolan/jq
