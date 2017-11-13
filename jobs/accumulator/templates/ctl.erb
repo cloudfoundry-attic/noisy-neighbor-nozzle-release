@@ -1,0 +1,52 @@
+#!/bin/bash -e
+
+RUN_DIR=/var/vcap/sys/run/accumulator
+LOG_DIR=/var/vcap/sys/log/accumulator
+PIDFILE=${RUN_DIR}/accumulator.pid
+JOB_DIR=/var/vcap/jobs/accumulator
+CERT_DIR=$JOB_DIR/config/certs
+
+PACKAGE_DIR=/var/vcap/packages/accumulator
+ENVIRONMENT=/var/vcap/jobs/accumulator/bin/environment.sh
+
+case $1 in
+
+  start)
+    set +e
+      killall -15 accumulator
+      killall -9 accumulator
+      killall -2 accumulator
+      killall -3 accumulator
+    set -e
+
+    mkdir -p $RUN_DIR $LOG_DIR
+    chown -R vcap:vcap $RUN_DIR $LOG_DIR
+
+    cd $PACKAGE_DIR
+
+    ulimit -n 8192
+
+    source $ENVIRONMENT
+    echo $$ > $PIDFILE
+    exec chpst -u vcap:vcap ./accumulator &>> ${LOG_DIR}/accumulator.log
+
+    ;;
+
+  stop)
+    set +e
+      killall -15 accumulator
+      killall -9 accumulator
+      killall -2 accumulator
+      killall -3 accumulator
+    set -e
+
+    rm -f $PIDFILE
+
+    ;;
+
+  *)
+    echo "Usage: ctl {start|stop}"
+
+    ;;
+
+esac

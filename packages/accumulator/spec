@@ -1,0 +1,11 @@
+---
+name: accumulator
+
+dependencies:
+- golang1.9.2
+
+files:
+- code.cloudfoundry.org/go-envstruct/*.go # gosub
+- code.cloudfoundry.org/noisy-neighbor-nozzle/accumulator/*.go # gosub
+- code.cloudfoundry.org/noisy-neighbor-nozzle/accumulator/internal/app/*.go # gosub
+- code.cloudfoundry.org/noisy-neighbor-nozzle/accumulator/internal/datadogreporter/*.go # gosub

@@ -1,0 +1,9 @@
+<%
+  nozzles = link("nozzle")
+  nozzle_addrs = nozzles.instances.map do |i|
+    "http://#{i.address}:#{nozzles.p("http.port")}"
+  end
+%>
+export NOZZLE_ADDRS="<%= nozzle_addrs.join(",") %>"
+export DATADOG_API_KEY="<%= p("datadog.api_key") %>"
+export REPORTER_HOST="<%= p("reporter.host") %>"

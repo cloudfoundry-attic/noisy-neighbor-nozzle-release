@@ -1,0 +1,6 @@
+check process accumulator
+  with pidfile /var/vcap/sys/run/accumulator/accumulator.pid
+  start program "/var/vcap/jobs/accumulator/bin/ctl start"
+  stop program "/var/vcap/jobs/accumulator/bin/ctl stop"
+  group vcap
+

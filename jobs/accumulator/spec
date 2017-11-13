@@ -1,0 +1,19 @@
+---
+name: accumulator
+
+templates:
+  ctl.erb: bin/ctl
+  environment.sh.erb: bin/environment.sh
+
+packages:
+- accumulator
+
+consumes:
+- name: nozzle
+  type: nozzle
+
+properties:
+  datadog.api_key:
+    description: "Datadog API key used to send metrics to Datadog"
+  reporter.host:
+    description: "Host to set on metrics sent to Datadog"

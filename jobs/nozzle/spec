@@ -8,6 +8,12 @@ templates:
 packages:
 - nozzle
 
+provides:
+- name: nozzle
+  type: nozzle
+  properties:
+  - http.port
+
 properties:
   uaa.addr:
     description: "The address of UAA."

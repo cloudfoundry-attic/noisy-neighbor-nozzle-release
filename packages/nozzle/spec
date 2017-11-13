@@ -19,6 +19,7 @@ files:
 - github.com/gogo/protobuf/gogoproto/*.go # gosub
 - github.com/gogo/protobuf/proto/*.go # gosub
 - github.com/gogo/protobuf/protoc-gen-gogo/descriptor/*.go # gosub
+- github.com/gorilla/handlers/*.go # gosub
 - github.com/gorilla/mux/*.go # gosub
 - github.com/gorilla/websocket/*.go # gosub
 - github.com/mailru/easyjson/*.go # gosub

@@ -40,3 +40,6 @@
 [submodule "src/code.cloudfoundry.org/noisy-neighbor-nozzle"]
 	path = src/code.cloudfoundry.org/noisy-neighbor-nozzle
 	url = https://github.com/cloudfoundry-incubator/noisy-neighbor-nozzle
+[submodule "src/github.com/gorilla/handlers"]
+	path = src/github.com/gorilla/handlers
+	url = https://github.com/gorilla/handlers
