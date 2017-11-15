@@ -8,25 +8,36 @@ then
     env_name=lite
 fi
 
-echo "System Domain:"
-read system_domain
+if [ "$SYSTEM_DOMAIN" == '' ]
+then
+    SYSTEM_DOMAIN='bosh-lite.com'
+fi
 
-echo ""
-echo "Client ID:"
-read uaa_client_id
+if [ "$CLIENT_ID" == '' ]
+then
+    echo ""
+    echo "UAA Client ID:"
+    read CLIENT_ID
+fi
 
-echo ""
-echo "Client Secret:"
-read uaa_client_secret
+if [ "$CLIENT_SECRET" == '' ]
+then
+    echo ""
+    echo "UAA Client Secret:"
+    read CLIENT_SECRET
+fi
 
-echo ""
-echo "Datadog API Key:"
-read datadog_api_key
+if [ "$DATADOG_API_KEY" == '' ]
+then
+    echo ""
+    echo "Datadog API Key:"
+    read DATADOG_API_KEY
+fi
 
 bosh create-release --force
 bosh -e $env_name upload-release --rebase
 bosh -e $env_name deploy -n -d noisy-neighbor-nozzle manifests/noisy-neighbor-nozzle.yml \
-    -v "uaa_client_id=$uaa_client_id" \
-    -v "uaa_client_secret=$uaa_client_secret" \
-    -v "datadog_api_key=$datadog_api_key" \
-    -v "system_domain=$system_domain"
+    -v "uaa_client_id=$CLIENT_ID" \
+    -v "uaa_client_secret=$CLIENT_SECRET" \
+    -v "datadog_api_key=$DATADOG_API_KEY" \
+    -v "system_domain=$SYSTEM_DOMAIN"

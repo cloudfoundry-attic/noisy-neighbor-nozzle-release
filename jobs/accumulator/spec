@@ -17,3 +17,7 @@ properties:
     description: "Datadog API key used to send metrics to Datadog"
   reporter.host:
     description: "Host to set on metrics sent to Datadog"
+
+  tls.skip_cert_verify:
+    description: "Skip TLS cert verify for both UAA and Loggregator."
+    default: false

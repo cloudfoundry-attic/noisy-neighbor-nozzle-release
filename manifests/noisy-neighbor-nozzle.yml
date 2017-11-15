@@ -46,6 +46,8 @@ instance_groups:
   - name: accumulator
     release: noisy-neighbor-nozzle
     properties:
+      tls:
+        skip_cert_verify: true
       datadog:
         api_key: ((datadog_api_key))
       reporter:

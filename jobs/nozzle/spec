@@ -13,6 +13,9 @@ provides:
   type: nozzle
   properties:
   - http.port
+  - uaa.addr
+  - uaa.client_id
+  - uaa.client_secret
 
 properties:
   uaa.addr:
