@@ -9,3 +9,4 @@ files:
 - code.cloudfoundry.org/noisy-neighbor-nozzle/accumulator/*.go # gosub
 - code.cloudfoundry.org/noisy-neighbor-nozzle/accumulator/internal/app/*.go # gosub
 - code.cloudfoundry.org/noisy-neighbor-nozzle/accumulator/internal/datadogreporter/*.go # gosub
+- code.cloudfoundry.org/noisy-neighbor-nozzle/authenticator/*.go # gosub
