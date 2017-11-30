@@ -2,12 +2,15 @@ Noisy Neighbor Nozzle [![slack.cloudfoundry.org][slack-badge]][loggregator-slack
 =====================
 
 This is a Loggregator Firehose nozzle. It keeps track of the log rate for
-applications.
+applications and reports to [Datadog](datadog). On a set interval (default to
+1 minute) the accumulator will collect log counts from the nozzles and send
+those counts to [Datadog](datadog).
 
 ### Deploy to Bosh Lite
 
-Ensure your CF deployment has a [client configured][firehose-details] with the `doppler.firehose`
-scope.
+Ensure your CF deployment has a [client configured][firehose-details] with the
+`doppler.firehose` scope and authority as well as the `uaa.resource`
+authority.
 
 ```
 bosh create-release
@@ -19,83 +22,9 @@ bosh -d noisy-neighbor-nozzle deploy manifests/noisy-neighbor-nozzle.yml \
   -v system_domain=bosh-lite.com
 ```
 
-To view log rates:
-
-```
-bosh -d noisy-neighbor-nozzle ssh nozzle/0
-curl localhost:8080/state
-```
-
-You can use [jq][jq-github] to format the response, which will result in the
-following:
-
-```
-[
-  {
-    "counts": {
-      "d99bcfb3-50f5-4836-9cea-ac1fb769b073/1": 966,
-      "d99bcfb3-50f5-4836-9cea-ac1fb769b073/0": 1186,
-      "24885497-ecfa-4aaa-b4c5-965c457f7670/0": 2048,
-      "295b7483-17ae-4063-85d6-c1f9d162bb92/0": 2,
-      "d505ddb7-3b48-43b7-945a-444c19db6e15/": 1,
-      "d505ddb7-3b48-43b7-945a-444c19db6e15/0": 1255,
-      "d505ddb7-3b48-43b7-945a-444c19db6e15/1": 93,
-      "d505ddb7-3b48-43b7-945a-444c19db6e15/2": 1252,
-      "d505ddb7-3b48-43b7-945a-444c19db6e15/3": 1253,
-      "d505ddb7-3b48-43b7-945a-444c19db6e15/4": 1125
-    },
-    "timestamp": 1510249620
-  },
-  {
-    "counts": {
-      "d99bcfb3-50f5-4836-9cea-ac1fb769b073/1": 1084,
-      "24885497-ecfa-4aaa-b4c5-965c457f7670/0": 2339,
-      "295b7483-17ae-4063-85d6-c1f9d162bb92/0": 2,
-      "d505ddb7-3b48-43b7-945a-444c19db6e15/0": 1251,
-      "d505ddb7-3b48-43b7-945a-444c19db6e15/1": 147,
-      "d505ddb7-3b48-43b7-945a-444c19db6e15/2": 248,
-      "d505ddb7-3b48-43b7-945a-444c19db6e15/3": 1252,
-      "d505ddb7-3b48-43b7-945a-444c19db6e15/4": 1252,
-      "d99bcfb3-50f5-4836-9cea-ac1fb769b073/0": 1178
-    },
-    "timestamp": 1510249680
-  }
-]
-```
-
-The key for each count is `application-guid/instance-index`, the value is the
-number of logs received from the firehose for the configured rate (default is
-1 minute).
-
-You can also fetch rates for a single timestamp. Timestamps are truncated to
-the minute.
-
-```
-curl localhost:8080/state/1510604640
-```
-
-This returns a single rate object:
-
-```
-{
-  "counts": {
-    "d99bcfb3-50f5-4836-9cea-ac1fb769b073/1": 1084,
-    "24885497-ecfa-4aaa-b4c5-965c457f7670/0": 2339,
-    "295b7483-17ae-4063-85d6-c1f9d162bb92/0": 2,
-    "d505ddb7-3b48-43b7-945a-444c19db6e15/0": 1251,
-    "d505ddb7-3b48-43b7-945a-444c19db6e15/1": 147,
-    "d505ddb7-3b48-43b7-945a-444c19db6e15/2": 248,
-    "d505ddb7-3b48-43b7-945a-444c19db6e15/3": 1252,
-    "d505ddb7-3b48-43b7-945a-444c19db6e15/4": 1252,
-    "d99bcfb3-50f5-4836-9cea-ac1fb769b073/0": 1178
-  },
-  "timestamp": 1510604640
-}
-```
-
 [firehose-details]:  https://github.com/cloudfoundry/loggregator-release#consuming-the-firehose
-[jq-github]:         https://github.com/stedolan/jq
 [slack-badge]:       https://slack.cloudfoundry.org/badge.svg
 [loggregator-slack]: https://cloudfoundry.slack.com/archives/loggregator
 [ci-badge]:          https://loggregator.ci.cf-app.com/api/v1/pipelines/loggregator/jobs/noisy-neighbor-nozzle-tests/badge
 [ci-pipeline]:       https://loggregator.ci.cf-app.com/
+[datadog]:           https://datadoghq.com
