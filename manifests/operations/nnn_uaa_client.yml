@@ -6,5 +6,5 @@
     override: true
     secret: password
     scope: openid,oauth.approvals,doppler.firehose,uaa.resource
-    authorities: oauth.login,doppler.firehose,uaa.resource
+    authorities: oauth.login,doppler.firehose,uaa.resource,cloud_controller.admin_read_only
     redirect-uri: "http://127.0.0.1"
