@@ -20,3 +20,6 @@ src/github.com/codegangsta/cli
 # Golang
 pkg
 bin
+
+# Linters
+src/github.com/alecthomas/gometalinter
