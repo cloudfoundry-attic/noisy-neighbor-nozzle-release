@@ -37,3 +37,9 @@ properties:
   tls.skip_cert_verify:
     description: "Skip TLS cert verify for both UAA and Loggregator."
     default: false
+
+  include_router_logs:
+    description: |
+      If set to true, router logs will be counted towards the applications log
+      rates
+    default: false

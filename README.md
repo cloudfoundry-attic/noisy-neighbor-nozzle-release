@@ -1,10 +1,32 @@
-Noisy Neighbor Nozzle [![slack.cloudfoundry.org][slack-badge]][loggregator-slack] [![CI Badge][ci-badge]][ci-pipeline]
+Noisy Neighbor Nozzle
+[![slack.cloudfoundry.org][slack-badge]][loggregator-slack]
+[![CI Badge][ci-badge]][ci-pipeline]
 =====================
 
 This is a Loggregator Firehose nozzle. It keeps track of the log rate for
 applications and reports to [Datadog](datadog). On a set interval (default to
 1 minute) the accumulator will collect log counts from the nozzles and send
 those counts to [Datadog](datadog).
+
+### How it works.
+
+The noisy neighbor nozzle consists of two components, a nozzle and an
+accumulator.
+
+The nozzle will read logs (excluding router logs by default) from the
+Loggregator firehose keeping counts for the number of logs received for each
+application. The nozzle stores the last 60 minutes worth of this data in an
+in-memory cache.
+
+Every minute the accumulator will sum the application log rates from all the
+nozzles for a single minute and report those totals to Datadog.
+
+### Scaling
+
+The nozzle can be scaled horizontally. We recommend having the same number of
+nozzles as you have Loggregator Traffic Controllers.
+
+Currently there should only ever be one accumulator.
 
 ### Deploy to Bosh Lite
 
