@@ -32,7 +32,7 @@ Currently there should only ever be one accumulator.
 
 Ensure your CF deployment has a [client configured][firehose-details] with the
 `doppler.firehose` scope and authority as well as the `uaa.resource`
-authority.
+and `cloud_controller.admin_read_only` authorities.
 
 ```
 bosh create-release
