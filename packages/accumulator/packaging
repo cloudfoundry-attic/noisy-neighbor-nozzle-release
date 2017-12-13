@@ -7,7 +7,7 @@ export GOROOT=$(readlink -nf /var/vcap/packages/golang1.9.2)
 export GOPATH=$BOSH_INSTALL_TARGET
 export PATH=$GOROOT/bin:$PATH
 
-go build -o ${BOSH_INSTALL_TARGET}/accumulator code.cloudfoundry.org/noisy-neighbor-nozzle/accumulator
+go build -o ${BOSH_INSTALL_TARGET}/accumulator code.cloudfoundry.org/noisy-neighbor-nozzle/cmd/accumulator
 
 # clean up source artifacts
 rm -rf ${BOSH_INSTALL_TARGET}/src ${BOSH_INSTALL_TARGET}/pkg

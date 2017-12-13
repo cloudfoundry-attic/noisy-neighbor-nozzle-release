@@ -6,12 +6,12 @@ dependencies:
 
 files:
 - code.cloudfoundry.org/go-envstruct/*.go # gosub
-- code.cloudfoundry.org/noisy-neighbor-nozzle/accumulator/*.go # gosub
-- code.cloudfoundry.org/noisy-neighbor-nozzle/accumulator/internal/app/*.go # gosub
-- code.cloudfoundry.org/noisy-neighbor-nozzle/accumulator/internal/collector/*.go # gosub
-- code.cloudfoundry.org/noisy-neighbor-nozzle/accumulator/internal/datadogreporter/*.go # gosub
-- code.cloudfoundry.org/noisy-neighbor-nozzle/accumulator/internal/web/*.go # gosub
-- code.cloudfoundry.org/noisy-neighbor-nozzle/internal/authenticator/*.go # gosub
-- code.cloudfoundry.org/noisy-neighbor-nozzle/internal/middleware/*.go # gosub
+- code.cloudfoundry.org/noisy-neighbor-nozzle/cmd/accumulator/*.go # gosub
+- code.cloudfoundry.org/noisy-neighbor-nozzle/cmd/accumulator/app/*.go # gosub
+- code.cloudfoundry.org/noisy-neighbor-nozzle/pkg/auth/*.go # gosub
+- code.cloudfoundry.org/noisy-neighbor-nozzle/pkg/collector/*.go # gosub
+- code.cloudfoundry.org/noisy-neighbor-nozzle/pkg/datadog/*.go # gosub
+- code.cloudfoundry.org/noisy-neighbor-nozzle/pkg/store/*.go # gosub
+- code.cloudfoundry.org/noisy-neighbor-nozzle/pkg/web/*.go # gosub
 - github.com/gorilla/handlers/*.go # gosub
 - github.com/gorilla/mux/*.go # gosub

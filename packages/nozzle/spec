@@ -7,12 +7,12 @@ dependencies:
 files:
 - code.cloudfoundry.org/go-diodes/*.go # gosub
 - code.cloudfoundry.org/go-envstruct/*.go # gosub
-- code.cloudfoundry.org/noisy-neighbor-nozzle/internal/authenticator/*.go # gosub
-- code.cloudfoundry.org/noisy-neighbor-nozzle/internal/middleware/*.go # gosub
-- code.cloudfoundry.org/noisy-neighbor-nozzle/nozzle/*.go # gosub
-- code.cloudfoundry.org/noisy-neighbor-nozzle/nozzle/internal/app/*.go # gosub
-- code.cloudfoundry.org/noisy-neighbor-nozzle/nozzle/internal/store/*.go # gosub
-- code.cloudfoundry.org/noisy-neighbor-nozzle/nozzle/internal/web/*.go # gosub
+- code.cloudfoundry.org/noisy-neighbor-nozzle/cmd/nozzle/*.go # gosub
+- code.cloudfoundry.org/noisy-neighbor-nozzle/cmd/nozzle/app/*.go # gosub
+- code.cloudfoundry.org/noisy-neighbor-nozzle/pkg/auth/*.go # gosub
+- code.cloudfoundry.org/noisy-neighbor-nozzle/pkg/ingress/*.go # gosub
+- code.cloudfoundry.org/noisy-neighbor-nozzle/pkg/store/*.go # gosub
+- code.cloudfoundry.org/noisy-neighbor-nozzle/pkg/web/*.go # gosub
 - github.com/cloudfoundry/noaa/*.go # gosub
 - github.com/cloudfoundry/noaa/consumer/*.go # gosub
 - github.com/cloudfoundry/noaa/consumer/internal/*.go # gosub

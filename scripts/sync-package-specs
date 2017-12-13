@@ -30,7 +30,7 @@ function sync_package() {
   )
 }
 
-sync_package nozzle      -app code.cloudfoundry.org/noisy-neighbor-nozzle/nozzle &
-sync_package accumulator -app code.cloudfoundry.org/noisy-neighbor-nozzle/accumulator &
+sync_package nozzle      -app code.cloudfoundry.org/noisy-neighbor-nozzle/cmd/nozzle &
+sync_package accumulator -app code.cloudfoundry.org/noisy-neighbor-nozzle/cmd/accumulator &
 
 wait
