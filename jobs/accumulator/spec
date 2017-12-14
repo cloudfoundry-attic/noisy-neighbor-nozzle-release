@@ -8,22 +8,20 @@ templates:
 packages:
 - accumulator
 
+provides:
+- name: accumulator
+  type: accumulator
+  properties:
+  - http.port
+
 consumes:
 - name: nozzle
   type: nozzle
 
 properties:
-  capi.addr:
-    description: "The address to the cloud controller API"
-
   http.port:
     description: "The port the accumulator will listen on for any HTTP requests."
     default: 8080
-
-  datadog.api_key:
-    description: "Datadog API key used to send metrics to Datadog"
-  reporter.host:
-    description: "Host to set on metrics sent to Datadog"
 
   tls.skip_cert_verify:
     description: "Skip TLS cert verify for both UAA and Loggregator"

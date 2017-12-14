@@ -1,32 +1,39 @@
-Noisy Neighbor Nozzle
+Noisy Neighbor Nozzle Release
 [![slack.cloudfoundry.org][slack-badge]][loggregator-slack]
 [![CI Badge][ci-badge]][ci-pipeline]
 =====================
 
 This is a Loggregator Firehose nozzle. It keeps track of the log rate for
-applications and reports to [Datadog](datadog). On a set interval (default to
-1 minute) the accumulator will collect log counts from the nozzles and send
-those counts to [Datadog](datadog).
+applications and reports to [Datadog](datadog).
 
-### How it works.
+## How it works.
 
-The noisy neighbor nozzle consists of two components, a nozzle and an
-accumulator.
+The noisy neighbor nozzle consists of three components, nozzle, accumulator and
+datadog-reporter.
 
 The nozzle will read logs (excluding router logs by default) from the
 Loggregator firehose keeping counts for the number of logs received for each
 application. The nozzle stores the last 60 minutes worth of this data in an
 in-memory cache.
 
-Every minute the accumulator will sum the application log rates from all the
-nozzles for a single minute and report those totals to Datadog.
+The accumulator acts as a proxy for all the nozzles. When the accumulator
+receives an HTTP request it will forward the same request to all the nozzles.
+The accumulator then takes to rates from all the nozzles and sums them together,
+responding with the total rates.
 
-### Scaling
+The datadog-reporter is an optional component. When deployed, it will request
+rates from the accumulator every minute and report the top 50 noisiest
+applications to [Datadog](datadog)
+
+## Scaling
 
 The nozzle can be scaled horizontally. We recommend having the same number of
 nozzles as you have Loggregator Traffic Controllers.
 
-Currently there should only ever be one accumulator.
+The accumulator and datadog-reporter should only be deployed with a single
+instance.
+
+## Deployment
 
 ### Deploy to Bosh Lite
 
@@ -44,9 +51,10 @@ bosh -d noisy-neighbor-nozzle deploy manifests/noisy-neighbor-nozzle.yml \
   -v system_domain=bosh-lite.com
 ```
 
-[firehose-details]:  https://github.com/cloudfoundry/loggregator-release#consuming-the-firehose
-[slack-badge]:       https://slack.cloudfoundry.org/badge.svg
-[loggregator-slack]: https://cloudfoundry.slack.com/archives/loggregator
-[ci-badge]:          https://loggregator.ci.cf-app.com/api/v1/pipelines/loggregator/jobs/noisy-neighbor-nozzle-tests/badge
-[ci-pipeline]:       https://loggregator.ci.cf-app.com/
-[datadog]:           https://datadoghq.com
+[firehose-details]:      https://github.com/cloudfoundry/loggregator-release#consuming-the-firehose
+[slack-badge]:           https://slack.cloudfoundry.org/badge.svg
+[loggregator-slack]:     https://cloudfoundry.slack.com/archives/loggregator
+[ci-badge]:              https://loggregator.ci.cf-app.com/api/v1/pipelines/loggregator/jobs/noisy-neighbor-nozzle-bump-submodule/badge
+[ci-pipeline]:           https://loggregator.ci.cf-app.com/teams/main/pipelines/loggregator/jobs/noisy-neighbor-nozzle-bump-submodule
+[datadog]:               https://datadoghq.com
+[noisy-neighbor-nozzle]: https://code.cloudfoundry.org/noisy-neighbor-nozzle
