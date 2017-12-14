@@ -1,0 +1,14 @@
+---
+name: datadog-reporter
+
+dependencies:
+- golang1.9.2
+
+files:
+- code.cloudfoundry.org/go-envstruct/*.go # gosub
+- code.cloudfoundry.org/noisy-neighbor-nozzle/cmd/datadog-reporter/*.go # gosub
+- code.cloudfoundry.org/noisy-neighbor-nozzle/cmd/datadog-reporter/app/*.go # gosub
+- code.cloudfoundry.org/noisy-neighbor-nozzle/pkg/auth/*.go # gosub
+- code.cloudfoundry.org/noisy-neighbor-nozzle/pkg/collector/*.go # gosub
+- code.cloudfoundry.org/noisy-neighbor-nozzle/pkg/datadog/*.go # gosub
+- code.cloudfoundry.org/noisy-neighbor-nozzle/pkg/store/*.go # gosub

@@ -1,0 +1,5 @@
+check process datadog-reporter
+  with pidfile /var/vcap/sys/run/datadog-reporter/datadog-reporter.pid
+  start program "/var/vcap/jobs/datadog-reporter/bin/ctl start"
+  stop program "/var/vcap/jobs/datadog-reporter/bin/ctl stop"
+  group vcap

@@ -1,0 +1,28 @@
+---
+name: datadog-reporter
+
+templates:
+  ctl.erb: bin/ctl
+  environment.sh.erb: bin/environment.sh
+
+packages:
+- datadog-reporter
+
+consumes:
+- name: accumulator
+  type: accumulator
+- name: nozzle
+  type: nozzle
+
+properties:
+  capi.addr:
+    description: "The address to the cloud controller API"
+
+  datadog.api_key:
+    description: "Datadog API key used to send metrics to Datadog"
+  reporter.host:
+    description: "Host to set on metrics sent to Datadog"
+
+  tls.skip_cert_verify:
+    description: "Skip TLS cert verify for both UAA and Loggregator"
+    default: false
