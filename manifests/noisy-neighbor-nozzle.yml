@@ -15,7 +15,6 @@ instance_groups:
   - z1
   - z2
   instances: 2
-  persistent_disk_type: 5GB
   vm_type: minimal
   stemcell: default
   networks:
@@ -37,7 +36,6 @@ instance_groups:
   azs:
   - z1
   instances: 1
-  persistent_disk_type: 5GB
   vm_type: minimal
   stemcell: default
   networks:
