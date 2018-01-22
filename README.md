@@ -25,6 +25,15 @@ bosh -d noisy-neighbor-nozzle deploy manifests/noisy-neighbor-nozzle.yml \
   -v system_domain=bosh-lite.com
 ```
 
+### Example UAA Client
+```
+noisy-neighbor-nozzle:
+  authorities: oauth.login,doppler.firehose,uaa.resource,cloud_controller.admin_read_only
+  authorized-grant-types: client_credentials,refresh_token
+  override: true
+  scope: doppler.firehose,oauth.approvals
+  secret: <secret>
+```
 
 [bosh]:              https://bosh.io
 [datadog]:           https://datadoghq.com
