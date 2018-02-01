@@ -43,3 +43,15 @@
 [submodule "src/github.com/gorilla/handlers"]
 	path = src/github.com/gorilla/handlers
 	url = https://github.com/gorilla/handlers
+[submodule "src/github.com/mattn/go-colorable"]
+	path = src/github.com/mattn/go-colorable
+	url = https://github.com/mattn/go-colorable
+[submodule "src/github.com/mattn/go-isatty"]
+	path = src/github.com/mattn/go-isatty
+	url = https://github.com/mattn/go-isatty
+[submodule "src/github.com/mgutz/ansi"]
+	path = src/github.com/mgutz/ansi
+	url = https://github.com/mgutz/ansi
+[submodule "src/gopkg.in/AlecAivazis/survey.v1"]
+	path = src/gopkg.in/AlecAivazis/survey.v1
+	url = https://gopkg.in/AlecAivazis/survey.v1
