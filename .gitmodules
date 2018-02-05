@@ -55,3 +55,6 @@
 [submodule "src/gopkg.in/AlecAivazis/survey.v1"]
 	path = src/gopkg.in/AlecAivazis/survey.v1
 	url = https://gopkg.in/AlecAivazis/survey.v1
+[submodule "src/code.cloudfoundry.org/cli"]
+	path = src/code.cloudfoundry.org/cli
+	url = https://github.com/cloudfoundry/cli
