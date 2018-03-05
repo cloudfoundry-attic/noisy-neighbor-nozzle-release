@@ -28,10 +28,10 @@ bosh -d noisy-neighbor-nozzle deploy manifests/noisy-neighbor-nozzle.yml \
 ### Example UAA Client
 ```
 noisy-neighbor-nozzle:
-  authorities: oauth.login,doppler.firehose,uaa.resource,cloud_controller.admin_read_only
-  authorized-grant-types: client_credentials,refresh_token
+  authorities: doppler.firehose,uaa.resource,cloud_controller.admin_read_only
+  authorized-grant-types: client_credentials
   override: true
-  scope: doppler.firehose,oauth.approvals
+  scope: doppler.firehose
   secret: <secret>
 ```
 
