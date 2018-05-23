@@ -2,7 +2,7 @@
 name: datadog-reporter
 
 dependencies:
-- golang1.10.2
+- golang1.9.6
 
 files:
 - code.cloudfoundry.org/go-envstruct/*.go # gosub
