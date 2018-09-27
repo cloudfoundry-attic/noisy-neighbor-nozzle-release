@@ -1,3 +1,6 @@
+**NOTE: This release is deprecated. Please use the cf-pushable Noisy neighbor
+Nozzle at [noisy-neighbor-nozzle][noisy-neighbor-nozzle]**
+
 Noisy Neighbor Nozzle Release
 [![slack.cloudfoundry.org][slack-badge]][loggregator-slack]
 [![CI Badge][ci-badge]][ci-pipeline]
